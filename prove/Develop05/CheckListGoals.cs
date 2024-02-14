@@ -1,13 +1,32 @@
- class ChecklistGoal : Goal
-    {
-        public int TimesToComplete { get; set; }
-        public int TimesCompleted { get; set; }
-        public int BonusPoints { get; set; }
+public class ChecklistGoal : Goal
+{
+    public int TargetCount { get; private set; }
+    private int currentCount;
 
-        public ChecklistGoal(string name, string description, int timesToComplete, int bonusPoints) : base(name, description)
+    public ChecklistGoal(string name, int points, int targetCount)
+    {
+        Name = name;
+        Points = points;
+        TargetCount = targetCount;
+        currentCount = 0;
+    }
+
+    public override void Complete()
+    {
+        currentCount++;
+
+        Console.WriteLine($"{Name} activity completed ({currentCount}/{TargetCount}). You gained {Points} points!");
+
+        if (currentCount == TargetCount)
         {
-            TimesToComplete = timesToComplete;
-            TimesCompleted = 0;
-            BonusPoints = bonusPoints;
+            int bonusPoints = 500;
+            Console.WriteLine($"Congratulations! You achieved the desired amount. Bonus: {bonusPoints} points!");
+            Points += bonusPoints;
         }
     }
+
+    public override string GetStatus()
+    {
+        return $"Completed {currentCount}/{TargetCount} times";
+    }
+}

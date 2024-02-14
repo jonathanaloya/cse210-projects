@@ -1,11 +1,18 @@
-class EternalGoal : Goal
+public class EternalGoal : Goal
+{
+    public EternalGoal(string name, int points)
     {
-        public int TimesToComplete { get; set; }
-        public int TimesCompleted { get; set; }
-
-        public EternalGoal(string name, string description, int timesToComplete) : base(name, description)
-        {
-            TimesToComplete = timesToComplete;
-            TimesCompleted = 0;
-        }
+        Name = name;
+        Points = points;
     }
+
+    public override void Complete()
+    {
+        Console.WriteLine($"{Name} activity recorded. You gained {Points} points!");
+    }
+
+    public override string GetStatus()
+    {
+        return "Recorded";
+    }
+}

@@ -1,11 +1,8 @@
-class Goal
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
+public abstract class Goal
+{
+    public string Name { get; protected set; }
+    public int Points { get; protected set; }
 
-        public Goal(string name, string description)
-        {
-            Name = name;
-            Description = description;
-        }
-    }
+    public abstract void Complete();
+    public abstract string GetStatus();
+}

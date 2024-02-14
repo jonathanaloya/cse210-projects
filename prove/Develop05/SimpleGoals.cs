@@ -1,9 +1,20 @@
-class SimpleGoal : Goal
+public class SimpleGoal : Goal
+{
+    public SimpleGoal(string name, int points)
     {
-        public int Points { get; set; }
-
-        public SimpleGoal(string name, string description, int points) : base(name, description)
-        {
-            Points = points;
-        }
+        Name = name;
+        Points = points;
     }
+
+    public override void Complete()
+    {
+        // Simple activities are marked as complete instantly without any conditions
+        Console.WriteLine($"{Name} activity completed. You gained {Points} points!");
+    }
+
+    public override string GetStatus()
+    {
+        return "Complete";
+    }
+}
+
