@@ -1,9 +1,18 @@
-using System;
-
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main()
     {
-        Console.WriteLine("Hello Foundation4 World!");
+        List<Activity> activities = new List<Activity>();
+
+        // Create activities
+        activities.Add(new RunningActivity(DateTime.Now, 30, 3.0));
+        activities.Add(new CyclingActivity(DateTime.Now, 45, 20.0));
+        activities.Add(new SwimmingActivity(DateTime.Now, 60, 10));
+
+        // Display summaries
+        foreach (Activity activity in activities)
+        {
+            Console.WriteLine(activity.GetSummary());
+        }
     }
 }
