@@ -1,17 +1,15 @@
 public class OutdoorGathering : Event
 {
-    private string WeatherForecast { get; set; }
+    private string weatherForecast;
 
-    // Constructor
-    public OutdoorGathering(string title, string description, DateTime date, TimeSpan time, string address, string weatherForecast)
+    public OutdoorGathering(string title, string description, DateTime date, string time, Address address, string weatherForecast)
         : base(title, description, date, time, address)
     {
-        WeatherForecast = weatherForecast;
+        this.weatherForecast = weatherForecast;
     }
 
-    // Method to generate full details message
-    public string GenerateFullDetailsMessage()
+    public override string GetFullDetails()
     {
-        return $"{GenerateStandardDetailsMessage()}\nWeather Forecast: {WeatherForecast}";
+        return $"{base.GetFullDetails()}\nType: Outdoor Gathering\nWeather Forecast: {weatherForecast}";
     }
 }

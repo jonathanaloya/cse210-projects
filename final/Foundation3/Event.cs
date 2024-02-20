@@ -1,24 +1,32 @@
 public class Event
 {
-    public string Title { get; set; }
-    private string Description { get; set; }
-    public DateTime Date { get; set; }
-    private TimeSpan Time { get; set; }
-    private string Address { get; set; }
+    private string title;
+    private string description;
+    private DateTime date;
+    private string time;
+    private Address address;
 
-    // Constructor
-    public Event(string title, string description, DateTime date, TimeSpan time, string address )
+    public Event(string title, string description, DateTime date, string time, Address address)
     {
-        Title = title;
-        Description = description;
-        Date = date;
-        Time = time;
-        Address = address;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.address = address;
     }
 
-    // Method to generate standard details message
-    public string GenerateStandardDetailsMessage()
+    public string GetStandardDetails()
     {
-        return $"Event: {Title}\nDescription: {Description}\nDate: {Date.ToShortDateString()}\nTime: {Time.ToString()}\nAddress: {Address.ToString()}";
+        return $"Title: {title}\nDescription: {description}\nDate: {date.ToShortDateString()}\nTime: {time}\nAddress: {address.GetAddress()}";
+    }
+
+    public virtual string GetFullDetails()
+    {
+        return GetStandardDetails();
+    }
+
+    public virtual string GetShortDescription()
+    {
+        return $"Type: Generic Event\nTitle: {title}\nDate: {date.ToShortDateString()}";
     }
 }

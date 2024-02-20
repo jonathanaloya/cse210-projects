@@ -1,19 +1,17 @@
 public class Lecture : Event
 {
-    private string Speaker { get; set; }
-    private int Capacity { get; set; }
+    private string speaker;
+    private int capacity;
 
-    // Constructor
-    public Lecture(string title, string description, DateTime date, TimeSpan time,string address, string speaker, int capacity)
+    public Lecture(string title, string description, DateTime date, string time, Address address, string speaker, int capacity)
         : base(title, description, date, time, address)
     {
-        Speaker = speaker;
-        Capacity = capacity;
+        this.speaker = speaker;
+        this.capacity = capacity;
     }
 
-    // Method to generate full details message
-    public string GenerateFullDetailsMessage()
+    public override string GetFullDetails()
     {
-        return $"{GenerateStandardDetailsMessage()}\nSpeaker: {Speaker}\nCapacity: {Capacity}";
+        return $"{base.GetFullDetails()}\nType: Lecture\nSpeaker: {speaker}\nCapacity: {capacity}";
     }
 }

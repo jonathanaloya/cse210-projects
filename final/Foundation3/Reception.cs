@@ -1,17 +1,15 @@
 public class Reception : Event
 {
-    private string RSVP { get; set; }
+    private string rsvpEmail;
 
-    // Constructor
-    public Reception(string title, string description, DateTime date, TimeSpan time, string address, string rsvp)
+    public Reception(string title, string description, DateTime date, string time, Address address, string rsvpEmail)
         : base(title, description, date, time, address)
     {
-        RSVP = rsvp;
+        this.rsvpEmail = rsvpEmail;
     }
 
-    // Method to generate full details message
-    public string GenerateFullDetailsMessage()
+    public override string GetFullDetails()
     {
-        return $"{GenerateStandardDetailsMessage()}\nRSVP: {RSVP}";
+        return $"{base.GetFullDetails()}\nType: Reception\nRSVP Email: {rsvpEmail}";
     }
 }

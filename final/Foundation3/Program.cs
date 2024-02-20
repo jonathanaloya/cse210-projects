@@ -1,28 +1,22 @@
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        // Create event instances
-        Lecture lecture = new Lecture("Introduction to Programming", "Learn the basics of programming", DateTime.Now, TimeSpan.FromHours(2), new Address("123 Main St", "City", "State", "12345"), "John Doe", 50);
-        Reception reception = new Reception("Networking Event", "Meet professionals in your industry", DateTime.Now, TimeSpan.FromHours(3), new Address("456 Elm St", "City", "State", "12345"), "rsvp@example.com");
-        OutdoorGathering gathering = new OutdoorGathering("Summer Picnic", "Enjoy a day in the park", DateTime.Now, TimeSpan.FromHours(4), new Address("789 Oak St", "City", "State", "12345"), "Sunny");
+        Address address1 = new Address("123 Main St", "Cityville", "Countryland");
+        Address address2 = new Address("456 Elm St", "Townsville", "Countryland");
+        Address address3 = new Address("789 Oak St", "Villageton", "Countryland");
 
-        // Generate marketing messages
-        Console.WriteLine("Standard Details:");
-        Console.WriteLine(lecture.GenerateStandardDetailsMessage());
-        Console.WriteLine(reception.GenerateStandardDetailsMessage());
-        Console.WriteLine(gathering.GenerateStandardDetailsMessage());
+        Lecture lecture = new Lecture("Tech Talk", "Exciting tech innovations", DateTime.Now, "10:00 AM", address1, "Duane Richards", 50);
+        Reception reception = new Reception("Networking Event", "Connect with professionals", DateTime.Now, "2:00 PM", address2, "rsvp@example.com");
+        OutdoorGathering gathering = new OutdoorGathering("Summer Picnic", "Enjoy outdoor activities", DateTime.Now, "4:00 PM", address3, "Sunny skies");
 
-        Console.WriteLine("\nFull Details:");
-        Console.WriteLine(lecture.GenerateFullDetailsMessage());
-        Console.WriteLine(reception.GenerateFullDetailsMessage());
-        Console.WriteLine(gathering.GenerateFullDetailsMessage());
+        Console.WriteLine("Lecture Details:");
+        Console.WriteLine(lecture.GetFullDetails());
 
-        Console.WriteLine("\nShort Description:");
-        Console.WriteLine($"Lecture: {lecture.Title}, Date: {lecture.Date.ToShortDateString()}");
-        Console.WriteLine($"Reception: {reception.Title}, Date: {reception.Date.ToShortDateString()}");
-        Console.WriteLine($"Outdoor Gathering: {gathering.Title}, Date: {gathering.Date.ToShortDateString()}");
+        Console.WriteLine("\nReception Details:");
+        Console.WriteLine(reception.GetFullDetails());
 
-        Console.ReadLine();
+        Console.WriteLine("\nOutdoor Gathering Details:");
+        Console.WriteLine(gathering.GetFullDetails());
     }
 }
